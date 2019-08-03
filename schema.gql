@@ -3,26 +3,28 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
-type Mutation {
-  addProduct(data: ProductInput!): Product!
-  updateProduct(data: ProductInput!, id: String!): Product!
-  removeProduct(id: String!): Boolean!
-}
-
-type Product {
+type Asset {
   id: ID!
   name: String!
-  quantity: Float!
+  type: String!
   addedAt: Float!
   updatedAt: Float!
 }
 
-input ProductInput {
+input AssetInput {
   name: String!
-  quantity: Float!
+  type: String!
+  addedAt: Float
+  updatedAt: Float
+}
+
+type Mutation {
+  addAsset(data: AssetInput!): Asset!
+  updateAsset(data: AssetInput!, id: String!): Asset!
+  removeAsset(id: String!): Boolean!
 }
 
 type Query {
-  product(id: String!): Product!
-  products: [Product!]!
+  asset(id: String!): Asset!
+  assets: [Asset!]!
 }

@@ -8,7 +8,7 @@ plugins:
 
 provider:
   name: aws
-  runtime: nodejs8.10
+  runtime: nodejs10.x
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -20,28 +20,40 @@ provider:
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
       Resource:
-        Fn::Join:
-          - ""
-          - - "arn:aws:dynamodb:*:*:table/"
-            - Ref: ProductsGqlDynamoDbTable
+        - { "Fn::GetAtt": ["Assets", "Arn"] }
+        - { "Fn::GetAtt": ["Orders", "Arn"] }
 
 functions:
-  queryProducts:
+  rpmInvestimentosGQL:
     handler: src/handler.graphql
     events:
       - http:
-          path: products
+          path: rpm-investimentos-gql
           method: any
           cors: true
     environment:
-      TABLE_NAME: products-gql
+      ASSETS_TABLE: { "Ref": "Assets" }
+      ORDERS_TABLE: { "Ref": "Orders" }
 
 resources:
   Resources:
-    ProductsGqlDynamoDbTable:
+    Assets:
       Type: AWS::DynamoDB::Table
       Properties:
-        TableName: products-gql
+        TableName: assets
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+    Orders:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: orders
         AttributeDefinitions:
           - AttributeName: id
             AttributeType: S

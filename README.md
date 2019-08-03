@@ -10,10 +10,10 @@ yarn start
 # CRUD Operations sample
 All HTTP Post requests.
 
-## Create Products
+## Create Assets
 ```
 mutation {
-  addProduct(data: {
+  addAsset(data: {
       name: "Teste",
       quantity: 10
   }) {
@@ -22,30 +22,30 @@ mutation {
 }
 ```
 
-## List Products
+## List Assets
 ```
 {
-  products {
+  assets {
     id
     name
   }
 }
 ```
 
-## Show Product
+## Show Asset
 ```
 {
-  product(id: "602a12c0-942d-11e9-951c-bb18edc8c9c2") {
+  asset(id: "602a12c0-942d-11e9-951c-bb18edc8c9c2") {
     id
     name
   }
 }
 ```
 
-## Update Product
+## Update Asset
 ```
 mutation {
-  updateProduct(
+  updateAsset(
     id: "602a12c0-942d-11e9-951c-bb18edc8c9c2",
     data: {
       name: "deugood",
@@ -56,10 +56,10 @@ mutation {
 }
 ```
 
-## Delete Product
+## Delete Asset
 ```
 mutation {
-  removeProduct(id: "602a12c0-942d-11e9-951c-bb18edc8c9c2")
+  removeAsset(id: "602a12c0-942d-11e9-951c-bb18edc8c9c2")
 }
 ```
 
@@ -85,11 +85,11 @@ All files             |      100 |      100 |      100 |      100 |             
  src/config           |      100 |      100 |      100 |      100 |                   |
   database.ts         |      100 |      100 |      100 |      100 |                   |
  src/models           |      100 |      100 |      100 |      100 |                   |
-  product.ts          |      100 |      100 |      100 |      100 |                   |
+  asset.ts          |      100 |      100 |      100 |      100 |                   |
  src/resolvers        |      100 |      100 |      100 |      100 |                   |
-  product-resolver.ts |      100 |      100 |      100 |      100 |                   |
+  asset-resolver.ts |      100 |      100 |      100 |      100 |                   |
  src/resolvers/types  |      100 |      100 |      100 |      100 |                   |
-  product-input.ts    |      100 |      100 |      100 |      100 |                   |
+  asset-input.ts    |      100 |      100 |      100 |      100 |                   |
 ----------------------|----------|----------|----------|----------|-------------------|
 
 Test Suites: 2 passed, 2 total

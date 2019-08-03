@@ -1,10 +1,10 @@
 import { buildSchema } from 'type-graphql';
-import ProductResolver from './resolvers/product-resolver';
+import AssetResolver from './resolvers/asset-resolver';
 
 export default async function setGlobalSchema() {
   // build TypeGraphQL executable schema
   (global as any).schema = (global as any).schema || await buildSchema({
-    resolvers: [ProductResolver],
+    resolvers: [AssetResolver],
     validate: false,
   });
 }

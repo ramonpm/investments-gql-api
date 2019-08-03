@@ -1,9 +1,7 @@
 {
-  "name": "typescript-serverless-graphql",
+  "name": "rpm-investimentos",
   "version": "1.0.0",
-  "repository": "https://github.com/ramonpm/typescript-serverless-graphql.git",
   "author": "Ramon de Paula Marques <ramonpm@gmail.com>",
-  "license": "Apache-2.0",
   "scripts": {
     "start": "sls offline start --useSeparateProcesses",
     "test": "jest"

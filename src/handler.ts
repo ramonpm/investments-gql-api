@@ -1,11 +1,11 @@
 import 'reflect-metadata';
 import { ApolloServer } from 'apollo-server-lambda';
-import ProductResolver from './resolvers/product-resolver';
+import AssetResolver from './resolvers/asset-resolver';
 import { buildSchemaSync } from 'type-graphql';
 
 export const server = new ApolloServer({
   schema: buildSchemaSync({
-      resolvers: [ProductResolver],
+      resolvers: [AssetResolver],
       emitSchemaFile: true,
       validate: false
   })

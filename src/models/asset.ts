@@ -1,7 +1,8 @@
 import { Field, ObjectType, ID } from 'type-graphql';
+import { AssetType } from '../enums/asset-type';
 
 @ObjectType()
-export default class Product {
+export default class Asset {
   @Field(type => ID)
   id: string;
 
@@ -9,7 +10,7 @@ export default class Product {
   name: string;
 
   @Field()
-  quantity: number;
+  type: AssetType;
 
   @Field()
   addedAt: number;
