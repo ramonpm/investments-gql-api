@@ -28,7 +28,7 @@ functions:
     handler: src/handler.graphql
     events:
       - http:
-          path: rpm-investimentos-gql
+          path: investments-gql-api
           method: any
           cors: true
     environment:

@@ -4,11 +4,11 @@ import {
   Arg,
   Mutation,
 } from 'type-graphql';
-import { v1 } from 'uuid';
 import Asset from '../models/asset';
 import dynamoDb from '../config/database';
 import AssetInput from './types/asset-input';
 import { DBTable } from '../enums/table-names';
+import { putInTable } from '../libs/dynamo';
 
 @Resolver(Asset)
 export default class AssetResolver {
@@ -34,18 +34,7 @@ export default class AssetResolver {
   async addAsset(
     @Arg('data') data: AssetInput,
   ): Promise<Asset> {
-    const params = {
-      TableName: DBTable.Assets,
-      Item: {
-        id: v1(),
-        name: data.name,
-        type: data.type,
-        addedAt: Date.now(),
-        updatedAt: Date.now()
-      }
-    };
-    await dynamoDb.put(params).promise();
-    return params.Item;
+    return await putInTable(DBTable.Assets, data);
   }
 
   @Mutation(returns => Asset)

@@ -8,60 +8,7 @@ yarn start
 ```
 
 # CRUD Operations sample
-All HTTP Post requests.
-
-## Create Assets
-```
-mutation {
-  addAsset(data: {
-      name: "Teste",
-      quantity: 10
-  }) {
-      name
-  }
-}
-```
-
-## List Assets
-```
-{
-  assets {
-    id
-    name
-  }
-}
-```
-
-## Show Asset
-```
-{
-  asset(id: "602a12c0-942d-11e9-951c-bb18edc8c9c2") {
-    id
-    name
-  }
-}
-```
-
-## Update Asset
-```
-mutation {
-  updateAsset(
-    id: "602a12c0-942d-11e9-951c-bb18edc8c9c2",
-    data: {
-      name: "deugood",
-      quantity: 10
-  }) {
-      name
-  }
-}
-```
-
-## Delete Asset
-```
-mutation {
-  removeAsset(id: "602a12c0-942d-11e9-951c-bb18edc8c9c2")
-}
-```
+Check resolvers' test files for samples.
 
 # Tests
 
@@ -73,29 +20,42 @@ Then
 
 ```
 yarn run v1.16.0
+$ yarn test
+yarn run v1.16.0
+warning package.json: No license field
 $ jest
  PASS  src/config/__tests__/database.test.ts
- PASS  src/__tests__/requests/handler.test.ts (7.849s)
-----------------------|----------|----------|----------|----------|-------------------|
-File                  |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
-----------------------|----------|----------|----------|----------|-------------------|
-All files             |      100 |      100 |      100 |      100 |                   |
- src                  |      100 |      100 |      100 |      100 |                   |
-  handler.ts          |      100 |      100 |      100 |      100 |                   |
- src/config           |      100 |      100 |      100 |      100 |                   |
-  database.ts         |      100 |      100 |      100 |      100 |                   |
- src/models           |      100 |      100 |      100 |      100 |                   |
-  asset.ts          |      100 |      100 |      100 |      100 |                   |
- src/resolvers        |      100 |      100 |      100 |      100 |                   |
-  asset-resolver.ts |      100 |      100 |      100 |      100 |                   |
- src/resolvers/types  |      100 |      100 |      100 |      100 |                   |
-  asset-input.ts    |      100 |      100 |      100 |      100 |                   |
-----------------------|----------|----------|----------|----------|-------------------|
+ PASS  src/__tests__/requests/asset-resolver.test.ts
+ PASS  src/__tests__/requests/order-resolver.test.ts
+---------------------|----------|----------|----------|----------|-------------------|
+File                 |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
+---------------------|----------|----------|----------|----------|-------------------|
+All files            |      100 |      100 |      100 |      100 |                   |
+ src                 |      100 |      100 |      100 |      100 |                   |
+  handler.ts         |      100 |      100 |      100 |      100 |                   |
+ src/config          |      100 |      100 |      100 |      100 |                   |
+  database.ts        |      100 |      100 |      100 |      100 |                   |
+ src/enums           |      100 |      100 |      100 |      100 |                   |
+  asset-type.ts      |      100 |      100 |      100 |      100 |                   |
+  order-type.ts      |      100 |      100 |      100 |      100 |                   |
+  table-names.ts     |      100 |      100 |      100 |      100 |                   |
+ src/libs            |      100 |      100 |      100 |      100 |                   |
+  dynamo.ts          |      100 |      100 |      100 |      100 |                   |
+ src/models          |      100 |      100 |      100 |      100 |                   |
+  asset.ts           |      100 |      100 |      100 |      100 |                   |
+  order.ts           |      100 |      100 |      100 |      100 |                   |
+ src/resolvers       |      100 |      100 |      100 |      100 |                   |
+  asset-resolver.ts  |      100 |      100 |      100 |      100 |                   |
+  order-resolver.ts  |      100 |      100 |      100 |      100 |                   |
+ src/resolvers/types |      100 |      100 |      100 |      100 |                   |
+  asset-input.ts     |      100 |      100 |      100 |      100 |                   |
+  order-input.ts     |      100 |      100 |      100 |      100 |                   |
+---------------------|----------|----------|----------|----------|-------------------|
 
-Test Suites: 2 passed, 2 total
-Tests:       7 passed, 7 total
+Test Suites: 3 passed, 3 total
+Tests:       13 passed, 13 total
 Snapshots:   0 total
-Time:        9.933s
+Time:        2.064s, estimated 53s
 Ran all test suites.
-Done in 12.34s.
+Done in 2.47s.
 ```

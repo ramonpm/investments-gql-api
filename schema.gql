@@ -22,9 +22,35 @@ type Mutation {
   addAsset(data: AssetInput!): Asset!
   updateAsset(data: AssetInput!, id: String!): Asset!
   removeAsset(id: String!): Boolean!
+  addOrder(data: OrderInput!): Order!
+  updateOrder(data: OrderInput!, id: String!): Order!
+  removeOrder(id: String!): Boolean!
+}
+
+type Order {
+  id: ID!
+  assetId: String!
+  userId: String!
+  type: String!
+  quantity: Float!
+  price: Float!
+  addedAt: Float!
+  updatedAt: Float!
+}
+
+input OrderInput {
+  assetId: String!
+  userId: String!
+  type: String!
+  quantity: Float!
+  price: Float!
+  addedAt: Float
+  updatedAt: Float
 }
 
 type Query {
   asset(id: String!): Asset!
   assets: [Asset!]!
+  order(id: String!): Order!
+  orders: [Order!]!
 }

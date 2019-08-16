@@ -5,5 +5,8 @@ module.exports = {
   "transform": {
     "^.+\\.tsx?$": "ts-jest"
   },
-  "collectCoverage": true
+  "collectCoverage": true,
+  "coveragePathIgnorePatterns": [
+    "<rootDir>/test-helpers/"
+  ]
 }

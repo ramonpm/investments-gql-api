@@ -7,10 +7,10 @@ export default class Order {
   id: string;
 
   @Field()
-  assetId: number;
+  assetId: string;
 
   @Field()
-  userId: number;
+  userId: string;
 
   @Field()
   type: OrderType;
