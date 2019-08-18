@@ -102,4 +102,21 @@ describe('Assets requests', () => {
     const result = await dynamoDb.scan({ TableName: DBTable.Assets }).promise();
     expect(result.Items.length).toBe(preResultLength);
   });
+
+  it('can have an expiration date', async () => {
+    const expirationDateInput = '2019-12-15';
+    const response = await mutate({
+      mutation: `mutation {
+          addAsset(data: {
+              name: "USIMA10",
+              type: "stock",
+              expirationDate: ${Date.parse(expirationDateInput)}
+          }) {
+              expirationDate
+          }
+        }`
+    });
+    const { expirationDate } = response.data.addAsset;
+    expect(new Date(expirationDate).toISOString().split('T')[0]).toEqual(expirationDateInput);
+  });
 });

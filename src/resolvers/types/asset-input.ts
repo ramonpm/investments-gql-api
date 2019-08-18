@@ -10,6 +10,9 @@ export default class AssetInput {
   type: AssetType;
 
   @Field({ nullable: true })
+  expirationDate: number;
+
+  @Field({ nullable: true })
   addedAt: number;
 
   @Field({ nullable: true })

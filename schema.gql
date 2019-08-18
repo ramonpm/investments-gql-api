@@ -7,6 +7,7 @@ type Asset {
   id: ID!
   name: String!
   type: String!
+  expirationDate: Float
   addedAt: Float!
   updatedAt: Float!
 }
@@ -14,6 +15,7 @@ type Asset {
 input AssetInput {
   name: String!
   type: String!
+  expirationDate: Float
   addedAt: Float
   updatedAt: Float
 }
