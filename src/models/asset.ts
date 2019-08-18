@@ -12,6 +12,9 @@ export default class Asset {
   @Field()
   type: AssetType;
 
+  @Field({ nullable: true })
+  expirationDate: number;
+
   @Field()
   addedAt: number;
 
